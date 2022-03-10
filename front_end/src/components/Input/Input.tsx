@@ -13,6 +13,8 @@ interface InputProps {
 	isLoading?: boolean;
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	value?: string | number;
+	name?: string;
+	type?: string;
 }
 
 export const Input: FC<InputProps> = ({
@@ -21,13 +23,17 @@ export const Input: FC<InputProps> = ({
 	isLoading = false,
 	onChange,
 	value,
+	name,
+	type,
 }) => {
 	return (
 		<StyledInputWrapper>
 			<StyledInput
+				name={name}
 				placeholder={placeholder}
 				onChange={onChange}
 				value={value}
+				type={type}
 			/>
 			<StyledIconWrapper>
 				{isLoading && <Loading />}

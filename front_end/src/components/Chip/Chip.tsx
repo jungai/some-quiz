@@ -3,11 +3,18 @@ import { StyledChipContainer } from "./ChipStyles";
 
 export interface ChipProps {
 	variant?: "outlined" | "filled";
+	onClick?: () => void;
 }
 
-export const Chip: FC<ChipProps> = ({ variant = "outlined", children }) => {
+export const Chip: FC<ChipProps> = ({
+	variant = "outlined",
+	children,
+	onClick,
+}) => {
 	return (
-		<StyledChipContainer variant={variant}>{children}</StyledChipContainer>
+		<StyledChipContainer variant={variant} onClick={onClick}>
+			{children}
+		</StyledChipContainer>
 	);
 };
 

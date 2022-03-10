@@ -3,8 +3,12 @@ import { useState } from "react";
 import { StyledInputWrapper } from "../Input/InputStyles";
 import { StyledDatePicker } from "./DatePickerStyles";
 
-export const DatePicker: FC = () => {
-	const [selectedDate, setSelectedDate] = useState<string | undefined>();
+export interface DatePickerProps {
+	value?: string;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export const DatePicker: FC<DatePickerProps> = ({ value = "", onChange }) => {
 	const currentDate = new Date().toISOString().split("T")[0];
 
 	return (
@@ -13,9 +17,9 @@ export const DatePicker: FC = () => {
 				type="date"
 				id="selected-date"
 				name="selected-date"
-				value={selectedDate || currentDate}
+				value={value}
 				min={currentDate}
-				onChange={(e) => setSelectedDate(e.target.value)}
+				onChange={onChange}
 			/>
 		</StyledInputWrapper>
 	);
