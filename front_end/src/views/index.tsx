@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import Input from "../components/Input";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -66,7 +65,6 @@ function App() {
 
 	return (
 		<div>
-			<Header title="Jungai" />
 			<MainLayout>
 				<Input
 					type="search"

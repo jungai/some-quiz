@@ -22,6 +22,7 @@ import {
 	setPackage,
 	setTimeSLot,
 } from "../../store/actions/reservation";
+import PageLoad from "../../components/PageLoad";
 
 const ReservTitle = styled.h1`
 	font-size: 1.4rem;
@@ -96,6 +97,7 @@ export const ReservationPage: FC = () => {
 
 	const dispatch = useDispatch();
 	const restaurant = useSelector((state: Store) => state.reservation.payload);
+	const isLogin = useSelector((state: Store) => state.auth.isLogin);
 	const selectedPackage = useSelector(
 		(state: Store) => state.reservation.form.selectedPackageId
 	);
@@ -136,6 +138,10 @@ export const ReservationPage: FC = () => {
 	]);
 
 	useEffect(() => {
+		if (!isLogin) {
+			alert("ก่อนทำการจองกรุณาเข้าสู่ระบบก่อนค่ะ");
+		}
+
 		dispatch(fetchRestaurantData(Number(id)));
 
 		return () => {
@@ -214,7 +220,7 @@ export const ReservationPage: FC = () => {
 					</ButtonWrapper>
 				</>
 			) : (
-				<h1>ไม่เจอ</h1>
+				<PageLoad />
 			)}
 		</Reservation>
 	);
