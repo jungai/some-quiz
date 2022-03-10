@@ -115,15 +115,6 @@ export const ReservationPage: FC = () => {
 		(state: Store) => state.reservation.form.customerPhone
 	);
 
-	console.log(
-		selectedPackage,
-		selectedDate,
-		selectedTime,
-		selectedNOG,
-		customerName,
-		customerPhone
-	);
-
 	useEffect(() => {
 		if (
 			!!selectedPackage &&
