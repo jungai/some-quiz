@@ -27,3 +27,25 @@ export const StyledIconWrapper = styled.div`
 		display: none;
 	}
 `;
+
+export const StyledList = styled.ul`
+	display: flex;
+	list-style: none;
+	padding: 0;
+`;
+
+export const StyleListItem = styled.li`
+	padding: 0 0.5rem;
+	font-weight: 500;
+	font-size: 0.9rem;
+	cursor: pointer;
+
+	&:hover {
+		color: tomato;
+		font-style: italic;
+	}
+
+	@media (min-width: ${size.md}) {
+		font-size: 1.2rem;
+	}
+`;

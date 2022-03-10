@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { size } from "../../utils/devices";
 
+// TODO: FIX WIDTH
 export const StyledCardContainer = styled.div`
 	border-radius: 1rem;
 	overflow: hidden;
 	border: 1px solid #ccc;
 	height: 280px;
-	width: 100%;
+	width: 350px;
+	background-color: white;
 `;
 
 export const StyledCardImgWrapper = styled.div`
