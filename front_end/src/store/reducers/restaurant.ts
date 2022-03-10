@@ -13,7 +13,11 @@ export interface RestaurantReducerState {
 	error: null | Error;
 }
 
-const initialState = { payload: [], isLoading: false, error: null };
+const initialState: RestaurantReducerState = {
+	payload: [],
+	isLoading: false,
+	error: null,
+};
 
 export const restaurantReducer = (
 	state: RestaurantReducerState = initialState,

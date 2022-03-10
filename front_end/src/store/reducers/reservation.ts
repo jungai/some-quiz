@@ -27,7 +27,7 @@ export interface ReservationReducerState {
 	};
 }
 
-const initialState = {
+const initialState: ReservationReducerState = {
 	payload: undefined,
 	isLoading: false,
 	error: null,
