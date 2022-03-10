@@ -246,6 +246,15 @@ export const getRestaurantsHandler = rest.get(
 	"https://test.mock/v1/restaurants",
 	(req, res, ctx) => {
 		const name = req.url.searchParams.get("name");
+		const id = req.url.searchParams.get("id");
+
+		// reservation page only purpose
+		if (id) {
+			const restaurant = mockRestaurants.find(
+				(restaurant) => restaurant.id === +id
+			);
+			return res(ctx.status(200), ctx.json<Restaurant | undefined>(restaurant));
+		}
 
 		// for search match by name
 		if (name) {
