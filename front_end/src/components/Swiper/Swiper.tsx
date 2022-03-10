@@ -12,7 +12,7 @@ export const Swiper: FC<SwiperProps> = ({ imgList }) => {
 		<StyledSwiperContainer navigation modules={[Navigation]}>
 			{imgList.map((img, index) => (
 				<SwiperSlide key={`${index}-${img.slice(0, 10)}`}>
-					<StyledSwiperImg src={img} alt="test" />
+					<StyledSwiperImg src={img} alt={img.slice(0, 10)} loading="lazy" />
 				</SwiperSlide>
 			))}
 		</StyledSwiperContainer>

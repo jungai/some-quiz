@@ -19,7 +19,7 @@ export const Card: FC<CardProps> = ({ imgSrc, title, location, onClick }) => {
 	return (
 		<StyledCardContainer onClick={onClick}>
 			<StyledCardImgWrapper>
-				<StyledCardImg src={imgSrc} />
+				<StyledCardImg src={imgSrc} loading="lazy" />
 			</StyledCardImgWrapper>
 			<StyledCardTextWrapper>
 				<StyledCardTextTitle>{title}</StyledCardTextTitle>
