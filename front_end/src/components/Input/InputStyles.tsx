@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { size } from "../../utils/devices";
 
 export const StyledInputWrapper = styled.div`
 	display: flex;
@@ -22,6 +23,10 @@ export const StyledInput = styled.input`
 	border: 0;
 	&:focus {
 		outline: none;
+	}
+
+	@media (min-width: ${size.lg}) {
+		font-size: 1.1rem;
 	}
 `;
 

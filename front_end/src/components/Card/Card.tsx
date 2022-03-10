@@ -23,7 +23,7 @@ export const Card: FC<CardProps> = ({ imgSrc, title, location, onClick }) => {
 			</StyledCardImgWrapper>
 			<StyledCardTextWrapper>
 				<StyledCardTextTitle>{title}</StyledCardTextTitle>
-				<StyledCardTextLocation>{location}</StyledCardTextLocation>
+				<StyledCardTextLocation>สาขา - {location}</StyledCardTextLocation>
 			</StyledCardTextWrapper>
 		</StyledCardContainer>
 	);
