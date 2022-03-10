@@ -10,7 +10,6 @@ export interface Restaurant {
 	id: number;
 	name: string;
 	pics: string[];
-	price: string;
 	location: string;
 	timeSlots: Slot[];
 	numberOfGuests: Slot[];
@@ -118,35 +117,33 @@ const mockTimeSlots: Slot[] = [
 const mockRestaurants: Restaurant[] = [
 	{
 		id: 1,
-		name: "Mcdonald",
+		name: "หัวปลาช่องนนทรี",
 		pics: [
-			"https://assets.brandinside.asia/uploads/2020/06/shutterstock_1181606473.jpg",
-			"https://media-cdn.tripadvisor.com/media/photo-s/1a/51/df/c0/mcdonald-s.jpg",
+			"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFUUplHLqChmwBEowNtJEIG_hdalavoyUtbw&usqp=CAU",
+			"https://www.ryoiireview.com/upload/article/201706/1498467224_8de60d906db582ebce7cead3867da5f1.jpg",
 		],
-		price: "20-400",
-		location: "บางนา",
+		location: "บางนา(ตรงจข้ามเมกะบางนา)",
 		timeSlots: mockTimeSlots,
 		numberOfGuests: mockNOG,
 		packages: [
 			{
 				id: 1,
-				text: "499 โครตคุ้ม",
+				text: "โต๊ะธรรมดา",
 			},
 			{
 				id: 2,
-				text: "699 อิ่มโครต",
+				text: "ห้องแอร์",
 			},
 		],
 	},
 	{
 		id: 2,
-		name: "Mcdonald",
+		name: "Octave Rooftop Lounge & Bar",
 		pics: [
-			"https://assets.brandinside.asia/uploads/2020/06/shutterstock_1181606473.jpg",
-			"https://media-cdn.tripadvisor.com/media/photo-s/1a/51/df/c0/mcdonald-s.jpg",
+			"https://www.eatchillwander.com/wp-content/uploads/2020/08/octave-rooftop-lounge-and-bar-marriott-sukhumvit-bangkok19-1024x683.jpg",
+			"https://sites.google.com/site/fooddring123/_/rsrc/1487142476571/la-moon/bar-rest_10.jpg",
 		],
-		price: "20-400",
-		location: "บางนา",
+		location: "โรงแรมแมริออท",
 		timeSlots: mockTimeSlots.slice(4, 11),
 		numberOfGuests: mockNOG,
 		packages: [
@@ -158,13 +155,12 @@ const mockRestaurants: Restaurant[] = [
 	},
 	{
 		id: 3,
-		name: "Mcdonald",
+		name: "Copper Buffet",
 		pics: [
-			"https://assets.brandinside.asia/uploads/2020/06/shutterstock_1181606473.jpg",
-			"https://media-cdn.tripadvisor.com/media/photo-s/1a/51/df/c0/mcdonald-s.jpg",
+			"https://bk-review.com/wp-content/uploads/2020/01/all-new-copper-bffet.jpg",
+			"https://miro.medium.com/max/1400/1*vb3Ha69xG7HcV0xJyqigBw.jpeg",
 		],
-		price: "20-400",
-		location: "บางนา",
+		location: "The sense ปิ่นเกล้า",
 		timeSlots: mockTimeSlots.slice(3, 7),
 		numberOfGuests: mockNOG,
 		packages: [
@@ -180,13 +176,12 @@ const mockRestaurants: Restaurant[] = [
 	},
 	{
 		id: 4,
-		name: "Mcdonald",
+		name: "เอเทรี่ยม @ โรงแรมแลนด์มาร์ค",
 		pics: [
-			"https://assets.brandinside.asia/uploads/2020/06/shutterstock_1181606473.jpg",
-			"https://media-cdn.tripadvisor.com/media/photo-s/1a/51/df/c0/mcdonald-s.jpg",
+			"https://cdn.eatigo.com/restaurant-image/378_d67d7271-2f6a-4f25-bcb6-63b72c68ba3e.jpeg",
+			"https://cdn.eatigo.com/restaurant-image/378_7a72d7d3-3c02-44ec-af60-0275a79a09bd.jpeg",
 		],
-		price: "20-400",
-		location: "บางนา",
+		location: "โรงแรมแลนด์มาร์ค กรุงเทพฯ",
 		timeSlots: mockTimeSlots,
 		numberOfGuests: mockNOG,
 		packages: [
@@ -198,13 +193,12 @@ const mockRestaurants: Restaurant[] = [
 	},
 	{
 		id: 5,
-		name: "mxdonald",
+		name: "หัวปลาช่องนนทรี",
 		pics: [
-			"https://assets.brandinside.asia/uploads/2020/06/shutterstock_1181606473.jpg",
-			"https://media-cdn.tripadvisor.com/media/photo-s/1a/51/df/c0/mcdonald-s.jpg",
+			"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFUUplHLqChmwBEowNtJEIG_hdalavoyUtbw&usqp=CAU",
+			"https://www.ryoiireview.com/upload/article/201706/1498467224_8de60d906db582ebce7cead3867da5f1.jpg",
 		],
-		price: "20-400",
-		location: "บางนา",
+		location: "นครอินทร์ (พระราม5)",
 		timeSlots: mockTimeSlots,
 		numberOfGuests: mockNOG,
 		packages: [
@@ -214,29 +208,28 @@ const mockRestaurants: Restaurant[] = [
 			},
 			{
 				id: 2,
-				text: "ห้องส่วนตัว",
+				text: "ห้องแอร์",
 			},
 		],
 	},
 	{
 		id: 6,
-		name: "Mcdonald",
+		name: "Yuzu Omakase",
 		pics: [
-			"https://assets.brandinside.asia/uploads/2020/06/shutterstock_1181606473.jpg",
-			"https://media-cdn.tripadvisor.com/media/photo-s/1a/51/df/c0/mcdonald-s.jpg",
+			"https://www.bkkmenu.com/files/sharer/yuzu-omakase.jpg?v=1644175995",
+			"https://site.listsothebysrealty.in.th/wp-content/uploads/2020/04/Yuzu-Omakase-2.jpg",
 		],
-		price: "20-400",
-		location: "บางนา",
+		location: "สยามสแควร์ ซอย 3",
 		timeSlots: [],
 		numberOfGuests: mockNOG,
 		packages: [
 			{
 				id: 1,
-				text: "โต๊ะธรรมดา",
+				text: "The Experience (9,500 บาท)",
 			},
 			{
 				id: 2,
-				text: "ห้องส่วนตัว",
+				text: "Omakase Course 2,500 บาท",
 			},
 		],
 	},
