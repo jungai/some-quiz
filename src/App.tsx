@@ -8,7 +8,8 @@ import LoginModal from "./components/LoginModal";
 import { useSelector } from "react-redux";
 import { Store } from "./store/types";
 
-const ReservationPage = lazy(() => import("./views/Reservation"));
+const ReservationPage = lazy(() => import("./views/Reservation@id"));
+const ReservationList = lazy(() => import("./views/ReservationHistory"));
 
 export const App: FC = () => {
 	const isOpenAuthModal = useSelector(
@@ -17,10 +18,18 @@ export const App: FC = () => {
 
 	return (
 		<>
-			<Header title="Jungai" />
+			<Header title="QuizResRant" />
 			{isOpenAuthModal && <LoginModal open={isOpenAuthModal} />}
 			<Routes>
 				<Route path="/" element={<Index />} />
+				<Route
+					path="reservation/history"
+					element={
+						<Suspense fallback={<PageLoading />}>
+							<ReservationList />
+						</Suspense>
+					}
+				></Route>
 				<Route
 					path="reservation/:id"
 					element={
