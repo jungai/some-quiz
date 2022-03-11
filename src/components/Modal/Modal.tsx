@@ -24,7 +24,9 @@ export const Modal: FC<ModalProps> = ({ children, open, onClose }) => {
 	return open ? (
 		<StyledModal>
 			<StyledModalWrapper>
-				<Card clean>{children}</Card>
+				<div style={{ width: "350px" }}>
+					<Card clean>{children}</Card>
+				</div>
 				<StyledModalCloseBtn onClick={onClose}>
 					<AiOutlineClose />
 				</StyledModalCloseBtn>

@@ -17,10 +17,11 @@ export const StyledButton = styled.button<ButtonProps>`
 	padding: 0.5rem 0.6rem;
 	transition: all 250ms;
 	width: 100%;
+	font-size: 1.1rem;
 
 	@media (min-width: ${size.md}) {
 		width: 300px;
-		font-size: 1.1rem;
+		font-size: 1.3rem;
 	}
 
 	${(props) =>

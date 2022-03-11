@@ -11,6 +11,7 @@ export const StyledModal = styled.div`
 	left: 0;
 	height: 100vh;
 	width: 100vw;
+	touch-action: none;
 	background: rgba(0, 0, 0, 0.5);
 `;
 

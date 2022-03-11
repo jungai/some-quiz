@@ -14,7 +14,7 @@ export const Button: FC<ButtonProps> = ({
 	disabled,
 }) => {
 	return (
-		<StyledButton block={block} disabled={disabled}>
+		<StyledButton block={block} disabled={disabled} onClick={onClick}>
 			{children}
 		</StyledButton>
 	);

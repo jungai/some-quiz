@@ -18,6 +18,12 @@ export const StyledHeaderContainer = styled.header`
 
 export const StyledHeaderText = styled.h1`
 	color: tomato;
+	font-size: 1.1rem;
+	cursor: pointer;
+
+	@media (min-width: ${size.md}) {
+		font-size: 1.5rem;
+	}
 `;
 
 export const StyledIconWrapper = styled.div`
@@ -37,7 +43,7 @@ export const StyledList = styled.ul`
 export const StyleListItem = styled.li`
 	padding: 0 0.5rem;
 	font-weight: 500;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	cursor: pointer;
 
 	&:hover {

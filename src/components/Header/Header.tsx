@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { logout, setIsOpenAuthModal } from "../../store/actions/auth";
 import { Store } from "../../store/types";
 import {
@@ -17,14 +18,17 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({ title }) => {
 	const isLogin = useSelector((state: Store) => state.auth.isLogin);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	return (
 		<StyledHeaderContainer>
-			<StyledHeaderText>{title}</StyledHeaderText>
+			<StyledHeaderText onClick={() => navigate("/")}>{title}</StyledHeaderText>
 			<StyledList>
 				{isLogin ? (
 					<>
-						<StyleListItem>ประวัติการจอง</StyleListItem>
+						<StyleListItem onClick={() => navigate("reservation/history")}>
+							ประวัติการจอง
+						</StyleListItem>
 						<StyleListItem onClick={() => dispatch(logout())}>
 							ออกจากระบบ
 						</StyleListItem>
