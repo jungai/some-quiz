@@ -1,3 +1,4 @@
+import { NormalizeReservation } from "../../utils/mock_api/reservation";
 import { Restaurant } from "../../utils/mock_api/restaurant";
 import {
 	ActionTypes,
@@ -11,10 +12,18 @@ import {
 	SET_NOG,
 	SET_CUSTOMER_NAME,
 	SET_CUSTOMER_PHONE,
+	CREATE_RESERV_ERROR,
+	CREATE_RESERV_SUCCESS,
+	CREATE_RESERV_DATA,
+	FETCH_RESERVATION_DATA,
+	FETCH_RESERVATION_SUCCESS,
+	FETCH_RESERVATION_ERROR,
+	RESET_RESERVATION_DATA,
 } from "../actions/reservation";
 
 export interface ReservationReducerState {
-	payload?: Restaurant;
+	restaurant?: Restaurant;
+	payload?: NormalizeReservation[];
 	isLoading: boolean;
 	error: null | Error;
 	form: {
@@ -25,11 +34,13 @@ export interface ReservationReducerState {
 		customerName?: string;
 		customerPhone?: string;
 	};
+	isSuccess: boolean;
 }
 
 const initialState: ReservationReducerState = {
-	payload: undefined,
+	payload: [],
 	isLoading: false,
+	isSuccess: false,
 	error: null,
 	form: {},
 };
@@ -47,7 +58,7 @@ export const reservationReducer = (
 		case FETCH_RESERV_RESTAURANT_SUCCESS:
 			return {
 				...state,
-				payload: action.payload,
+				restaurant: action.payload,
 				isLoading: false,
 			};
 		case FETCH_RESERV_RESTAURANT_ERROR:
@@ -108,7 +119,42 @@ export const reservationReducer = (
 					customerPhone: action.payload,
 				},
 			};
-
+		case CREATE_RESERV_DATA:
+			return {
+				...state,
+				isLoading: true,
+			};
+		case CREATE_RESERV_SUCCESS:
+			return {
+				...state,
+				isLoading: false,
+				isSuccess: action.payload,
+			};
+		case CREATE_RESERV_ERROR:
+			return {
+				...state,
+				error: action.error,
+				isLoading: false,
+			};
+		case FETCH_RESERVATION_DATA:
+			return {
+				...state,
+				isLoading: true,
+			};
+		case FETCH_RESERVATION_SUCCESS:
+			return {
+				...state,
+				payload: action.payload,
+				isLoading: false,
+			};
+		case FETCH_RESERVATION_ERROR:
+			return {
+				...state,
+				error: action.error,
+				isLoading: false,
+			};
+		// case RESET_RESERVATION_DATA:
+		// 	return { ...state, ...initialState };
 		default:
 			return state;
 	}

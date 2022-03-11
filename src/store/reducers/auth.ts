@@ -9,6 +9,7 @@ export interface AuthInfo {
 	id: number;
 	name: string;
 	username: string;
+	msisdn: string;
 }
 
 export interface AuthReducerState {
@@ -36,11 +37,18 @@ export const authReducer = (
 			return {
 				...state,
 				isLogin: true,
+				payload: {
+					id: 1,
+					name: "junior",
+					username: "junior1234",
+					msisdn: "0123456789",
+				},
 				isOpenAuthModal: false,
 			};
 		case LOGOUT:
 			return {
 				...state,
+				payload: undefined,
 				isLogin: false,
 			};
 		case SET_IS_OPEN_AUTH_MODAL:
