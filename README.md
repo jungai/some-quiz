@@ -9,7 +9,7 @@
 
 ## Runtest
 
-[https://some-quiz-ozdl5de78-jungai.vercel.app/](https://some-quiz-ozdl5de78-jungai.vercel.app/)
+[https://some-quiz-ten.vercel.app/](https://some-quiz-ten.vercel.app/)
 
 ## Installation (local development)
 
