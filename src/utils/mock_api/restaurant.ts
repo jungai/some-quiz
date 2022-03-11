@@ -16,7 +16,7 @@ export interface Restaurant {
 	packages: Slot[];
 }
 
-const mockNOG: Slot[] = [
+export const mockNOG: Slot[] = [
 	{
 		id: 1,
 		text: "1 ท่าน",
@@ -59,7 +59,7 @@ const mockNOG: Slot[] = [
 	},
 ];
 
-const mockTimeSlots: Slot[] = [
+export const mockTimeSlots: Slot[] = [
 	{
 		id: 1,
 		text: "10:00",
@@ -114,7 +114,7 @@ const mockTimeSlots: Slot[] = [
 	},
 ];
 
-const mockRestaurants: Restaurant[] = [
+export const mockRestaurants: Restaurant[] = [
 	{
 		id: 1,
 		name: "หัวปลาช่องนนทรี",
