@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Store } from "../../store/types";
 import Button from "../../components/Button";
 import {
+	createReservation,
 	fetchRestaurantData,
 	resetReservation,
 	setCustomerName,
@@ -96,7 +97,10 @@ export const ReservationPage: FC = () => {
 	const [disabled, setIsDisabled] = useState(true);
 
 	const dispatch = useDispatch();
-	const restaurant = useSelector((state: Store) => state.reservation.payload);
+	const restaurant = useSelector(
+		(state: Store) => state.reservation.restaurant
+	);
+	const authInfo = useSelector((state: Store) => state.auth.payload);
 	const isLogin = useSelector((state: Store) => state.auth.isLogin);
 	const selectedPackage = useSelector(
 		(state: Store) => state.reservation.form.selectedPackageId
@@ -116,6 +120,42 @@ export const ReservationPage: FC = () => {
 	const customerPhone = useSelector(
 		(state: Store) => state.reservation.form.customerPhone
 	);
+	const isCreateSuccess = useSelector(
+		(state: Store) => state.reservation.isSuccess
+	);
+
+	const handleSubmit = () => {
+		if (
+			authInfo &&
+			restaurant &&
+			selectedPackage &&
+			customerName &&
+			customerPhone &&
+			selectedDate &&
+			selectedTime &&
+			selectedNOG
+		) {
+			dispatch(
+				createReservation({
+					userId: authInfo.id,
+					restaurantId: restaurant.id,
+					packageId: selectedPackage,
+					customerName,
+					customerPhone,
+					nogId: selectedNOG,
+					date: selectedDate,
+					timeSlotId: selectedTime,
+				})
+			);
+		}
+	};
+
+	useEffect(() => {
+		if (isCreateSuccess) {
+			alert("ทำรายการจองสำเร็จ");
+			navigate("/");
+		}
+	}, [isCreateSuccess]);
 
 	useEffect(() => {
 		if (
@@ -199,7 +239,7 @@ export const ReservationPage: FC = () => {
 							</Chip>
 						))}
 					</ChipWrapper>
-					<DetailTitle>กรอกชื่อลูกค้า</DetailTitle>
+					<DetailTitle>ชื่อลูกค้า</DetailTitle>
 					<Input
 						name="customer-name"
 						showIcon={false}
@@ -207,7 +247,7 @@ export const ReservationPage: FC = () => {
 						value={customerName || ""}
 						onChange={(e) => dispatch(setCustomerName(e.target.value))}
 					/>
-					<DetailTitle>กรอกเบอร์ลูกค้า</DetailTitle>
+					<DetailTitle>เบอร์ลูกค้า</DetailTitle>
 					<Input
 						name="customer-phone"
 						showIcon={false}
@@ -216,7 +256,9 @@ export const ReservationPage: FC = () => {
 						onChange={(e) => dispatch(setCustomerPhone(e.target.value))}
 					/>
 					<ButtonWrapper>
-						<Button disabled={disabled}>จอง</Button>
+						<Button disabled={disabled} onClick={handleSubmit}>
+							จอง
+						</Button>
 					</ButtonWrapper>
 				</>
 			) : (
