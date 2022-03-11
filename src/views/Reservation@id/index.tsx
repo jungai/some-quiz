@@ -24,6 +24,7 @@ import {
 	setTimeSLot,
 } from "../../store/actions/reservation";
 import PageLoad from "../../components/PageLoad";
+import { isPhoneNumber } from "../../utils/regex";
 
 const ReservTitle = styled.h1`
 	font-size: 1.4rem;
@@ -36,6 +37,11 @@ const ReservTitle = styled.h1`
 	@media (min-width: ${size.lg}) {
 		font-size: 1.6rem;
 	}
+`;
+
+export const StyledRequiredText = styled.span`
+	color: red;
+	font-size: 0.8rem;
 `;
 
 const ReservDesc = styled.p`
@@ -124,6 +130,8 @@ export const ReservationPage: FC = () => {
 		(state: Store) => state.reservation.isSuccess
 	);
 
+	const isValidPhoneNumber = isPhoneNumber(customerPhone);
+
 	const handleSubmit = () => {
 		if (
 			authInfo &&
@@ -164,7 +172,8 @@ export const ReservationPage: FC = () => {
 			!!selectedTime &&
 			!!selectedNOG &&
 			!!customerName &&
-			!!customerPhone
+			!!customerPhone &&
+			isValidPhoneNumber
 		) {
 			setIsDisabled(false);
 		}
@@ -198,7 +207,9 @@ export const ReservationPage: FC = () => {
 					<ReservTitle>{restaurant?.name}</ReservTitle>
 					<ReservDesc>สาขา - {restaurant?.location}</ReservDesc>
 					<Swiper imgList={restaurant?.pics || []} />
-					<DetailTitle>เลือก Packages</DetailTitle>
+					<DetailTitle>
+						<StyledRequiredText>*</StyledRequiredText> เลือก Packages
+					</DetailTitle>
 					<ChipWrapper>
 						{restaurant?.packages.map((item, index) => (
 							<Chip
@@ -210,12 +221,18 @@ export const ReservationPage: FC = () => {
 							</Chip>
 						))}
 					</ChipWrapper>
-					<DetailTitle>เลือกวันที่</DetailTitle>
+					<DetailTitle>
+						<StyledRequiredText>*</StyledRequiredText> เลือกวันที่
+					</DetailTitle>
 					<DatePicker
 						value={selectedDate}
 						onChange={(e) => dispatch(setDate(e.target.value))}
+						error={!selectedDate}
+						errText="กรุณาเลือกวันที่"
 					/>
-					<DetailTitle>เลือกเวลา</DetailTitle>
+					<DetailTitle>
+						<StyledRequiredText>*</StyledRequiredText> เลือกเวลา
+					</DetailTitle>
 					<ChipWrapper>
 						{restaurant?.timeSlots.map((time, index) => (
 							<Chip
@@ -227,7 +244,9 @@ export const ReservationPage: FC = () => {
 							</Chip>
 						))}
 					</ChipWrapper>
-					<DetailTitle>เลือกจำนวนคน</DetailTitle>
+					<DetailTitle>
+						<StyledRequiredText>*</StyledRequiredText> เลือกจำนวนคน
+					</DetailTitle>
 					<ChipWrapper>
 						{restaurant?.numberOfGuests.map((nog, index) => (
 							<Chip
@@ -239,21 +258,33 @@ export const ReservationPage: FC = () => {
 							</Chip>
 						))}
 					</ChipWrapper>
-					<DetailTitle>ชื่อลูกค้า</DetailTitle>
+					<DetailTitle>
+						<StyledRequiredText>*</StyledRequiredText> ชื่อลูกค้า
+					</DetailTitle>
 					<Input
 						name="customer-name"
 						showIcon={false}
 						placeholder="ชื่อ"
+						error={!customerName}
+						errText={customerName ? "" : "กรุณากรอกชื่อลูกค้า"}
 						value={customerName || ""}
 						onChange={(e) => dispatch(setCustomerName(e.target.value))}
 					/>
-					<DetailTitle>เบอร์ลูกค้า</DetailTitle>
+					<DetailTitle>
+						<StyledRequiredText>*</StyledRequiredText> เบอร์ลูกค้า
+					</DetailTitle>
 					<Input
 						name="customer-phone"
 						showIcon={false}
 						placeholder="เบอร์มือถือ"
 						value={customerPhone || ""}
 						onChange={(e) => dispatch(setCustomerPhone(e.target.value))}
+						error={!isValidPhoneNumber}
+						errText={
+							customerPhone
+								? "เบอร์โทรศัพท์ไม่ถูกต้อง"
+								: "กรุณากรอกเบอร์โทรศัพท์"
+						}
 					/>
 					<ButtonWrapper>
 						<Button disabled={disabled} onClick={handleSubmit}>

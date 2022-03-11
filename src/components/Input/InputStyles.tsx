@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import { size } from "../../utils/devices";
 
-export const StyledInputWrapper = styled.div`
+export const StyledInputWrapper = styled.div<{ error?: boolean }>`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 5px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
+
+	${({ error }) => error && `border: 1px solid red;`}
+
 	&:hover {
 		box-shadow: 1px 1px 1px thistle;
 	}
@@ -39,4 +42,9 @@ export const StyledIconWrapper = styled.div`
 	& > * + * {
 		margin-left: 0.5rem;
 	}
+`;
+
+export const StyledErrorText = styled.span`
+	color: red;
+	font-size: 0.8rem;
 `;

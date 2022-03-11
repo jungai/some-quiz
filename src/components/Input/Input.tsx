@@ -5,6 +5,7 @@ import {
 	StyledIconWrapper,
 	StyledInput,
 	StyledInputWrapper,
+	StyledErrorText,
 } from "./InputStyles";
 
 interface InputProps {
@@ -15,6 +16,8 @@ interface InputProps {
 	value?: string | number;
 	name?: string;
 	type?: string;
+	error?: boolean;
+	errText?: string;
 }
 
 export const Input: FC<InputProps> = ({
@@ -25,21 +28,26 @@ export const Input: FC<InputProps> = ({
 	value,
 	name,
 	type,
+	error,
+	errText,
 }) => {
 	return (
-		<StyledInputWrapper>
-			<StyledInput
-				name={name}
-				placeholder={placeholder}
-				onChange={onChange}
-				value={value}
-				type={type}
-			/>
-			<StyledIconWrapper>
-				{isLoading && <Loading />}
-				{showIcon && <FcSearch />}
-			</StyledIconWrapper>
-		</StyledInputWrapper>
+		<div>
+			<StyledInputWrapper error={error}>
+				<StyledInput
+					name={name}
+					placeholder={placeholder}
+					onChange={onChange}
+					value={value}
+					type={type}
+				/>
+				<StyledIconWrapper>
+					{isLoading && <Loading />}
+					{showIcon && <FcSearch />}
+				</StyledIconWrapper>
+			</StyledInputWrapper>
+			{error && errText && <StyledErrorText>{errText}</StyledErrorText>}
+		</div>
 	);
 };
 
